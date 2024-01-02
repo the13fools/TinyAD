@@ -4,14 +4,15 @@
  */
 #pragma once
 
-#include <Eigen/SparseCholesky>
+// #include <Eigen/SparseCholesky>
+#include <Eigen/CholmodSupport>
 
 namespace TinyAD
 {
 
 template <
         typename PassiveT = double,
-        typename SolverT = Eigen::SimplicialLDLT<Eigen::SparseMatrix<PassiveT>>>
+        typename SolverT =  Eigen::CholmodSupernodalLLT< Eigen::SparseMatrix<PassiveT>> >
 struct LinearSolver
 {
     SolverT solver;
@@ -19,3 +20,4 @@ struct LinearSolver
 };
 
 }
+// Eigen::SimplicialLDLT<Eigen::SparseMatrix<PassiveT>>>
